@@ -6,8 +6,8 @@ function setup() {
   cvn.style('display', 'block')
 
   murm = new Murmuration({
-    xNum: 4,
-    yNum: 4
+    xNum: 32,
+    yNum: 32,
   })
 
   var options = {
@@ -15,7 +15,12 @@ function setup() {
   }
 }
 
+function update() {
+  murm.update()
+}
+
 function draw() {
+  update()
   background(0)
   murm.draw()
 }

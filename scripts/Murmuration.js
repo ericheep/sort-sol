@@ -9,14 +9,20 @@ function Murmuration(dim) {
     ySize: height / dim.yNum,
   }
 
+  this.angle = 10
+
   const starlings = []
 
   this.update = function() {
-
+    starlings.forEach(el => {
+      el.update(this.angle)
+    })
   }
 
   this.draw = function() {
-
+    starlings.forEach(el => {
+      el.draw()
+    })
   }
 
   this.checkPoint = function(x, y) {
