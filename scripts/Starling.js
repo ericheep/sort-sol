@@ -1,6 +1,11 @@
 // Starling.js
 
-function Starling() {
+function Starling(config) {
+  this.config = config
+  this.index = config.index
+
+  console.log(config)
+
   this.update = function() {
 
   }

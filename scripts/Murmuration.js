@@ -2,14 +2,14 @@
 // meant to contain many starlings
 
 function Murmuration(dim) {
-  const config = {}
+  this.config = {
+    xNum: dim.xNum,
+    yNum: dim.yNum,
+    xSize: width / dim.xNum,
+    ySize: height / dim.yNum,
+  }
 
-  config.xNum = dim.xNum
-  config.yNum = dim.yNum
-  config.xSize = width / dim.xNum
-  config.ySize = height / dim.yNum
-
-  console.log(config)
+  const starlings = []
 
   this.update = function() {
 
@@ -19,12 +19,23 @@ function Murmuration(dim) {
 
   }
 
-  this.getIndex = function(x, y) {
-    return Math.floor(y / config.ySize) * config.xNum + Math.floor(x / config.xSize)
-  }
-
   this.checkPoint = function(x, y) {
-    let index = this.getIndex(x, y)
-    console.log(index)
+    let xIndex = Math.floor(x / this.config.xSize)
+    let yIndex = Math.floor(y / this.config.ySize)
+    let index = yIndex * this.config.xNum + xIndex
+
+    const starling = starlings.find(e => e.index == index)
+
+    if (starling == undefined) {
+      let config = {
+        index: index,
+        xSize: this.config.xSize,
+        ySize: this.config.ySize,
+        xPos: xIndex * this.config.xSize,
+        yPos: yIndex * this.config.ySize,
+      }
+
+      starlings.push(new Starling(config))
+    }
   }
 }

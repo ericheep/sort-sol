@@ -21,9 +21,23 @@ function draw() {
 }
 
 function mousePressed() {
-  murm.checkPoint(mouseX, mouseY)
+  isCreated(mouseX, mouseY)
 }
 
 function mouseDragged() {
-  murm.checkPoint(mouseX, mouseY)
+  isCreated(mouseX, mouseY)
+}
+
+function isCreated(x, y) {
+  if (isWithinBounds(x, y)) {
+    murm.checkPoint(x, y)
+  }
+}
+
+function isWithinBounds(x, y) {
+  if (x >= 0 && x < width && y >= 0 && y < height) {
+    return true
+  } else {
+    return false
+  }
 }
